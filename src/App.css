@@ -1,38 +1,127 @@
-.App {
+/* Global Styling */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ebf4f5, #b5c6e0);
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.app-container {
+  background: white;
+  width: 420px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
   text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Summary Card */
+.summary {
+  background: linear-gradient(135deg, #9bb2e5, #698cbf);
+  padding: 20px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.summary h2 {
+  margin: 0;
+  font-size: 28px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.summary-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.income {
+  color: #00ffae;
+  font-weight: bold;
+}
+
+.expense {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+/* Form */
+.form-control {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.form-control input,
+.form-control select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.form-control input:focus,
+.form-control select:focus {
+  outline: none;
+  border: 1px solid #667eea;
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #9bafd9, #103783);
   color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Transaction List */
+.transaction-list {
+  margin-top: 10px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.transaction-item.income-bg {
+  background: #e6fffa;
+  border-left: 5px solid #00c896;
+}
+
+.transaction-item.expense-bg {
+  background: #ffe6e6;
+  border-left: 5px solid #ff4d4d;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background: #cc0000;
 }
