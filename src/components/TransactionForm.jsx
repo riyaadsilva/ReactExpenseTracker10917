@@ -8,14 +8,17 @@ const TransactionForm = ({ addTransaction }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!description || amount <= 0) {
+    const trimmedDescription = description.trim();
+    const numericAmount = Number(amount);
+
+    if (!trimmedDescription || numericAmount <= 0) {
       alert("Enter valid details!");
       return;
     }
 
     addTransaction({
-      description,
-      amount: Number(amount),
+      description: trimmedDescription,
+      amount: numericAmount,
       type,
     });
 
@@ -26,27 +29,46 @@ const TransactionForm = ({ addTransaction }) => {
 
   return (
     <form className="form-control" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
+      <div className="input-row">
+        <label className="field-group">
+          <span>Description</span>
+          <input
+            type="text"
+            placeholder="e.g. Salary, Groceries"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            aria-label="Description"
+          />
+        </label>
 
-      <input
-        type="number"
-        placeholder="Amount"
-        min="1"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
+        <label className="field-group">
+          <span>₹ Amount</span>
+          <input
+            type="number"
+            placeholder="0"
+            min="1"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            aria-label="Amount"
+          />
+        </label>
 
-      <select value={type} onChange={(e) => setType(e.target.value)}>
-        <option value="Income">Income</option>
-        <option value="Expense">Expense</option>
-      </select>
+        <label className="field-group">
+          <span>Type</span>
+          <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            aria-label="Transaction type"
+          >
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+        </label>
+      </div>
 
-      <button type="submit">Add Transaction</button>
+      <button type="submit" className="primary-btn">
+        + Add Transaction
+      </button>
     </form>
   );
 };
